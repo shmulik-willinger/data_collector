@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>repositories.Dao</OriginalElement>
+  <nodes>
+    <node x="1228.02" y="90.0">service.userConfiguration.CollectableEntityService</node>
+    <node x="10.5" y="90.0">service.collectingData.CollectorFactory</node>
+    <node x="714.5" y="0.0">repositories.DevicePropertiesRepository</node>
+    <node x="412.49999999999994" y="0.0">controller.IDeviceController</node>
+    <node x="974.5" y="90.0">repositories.Dao</node>
+    <node x="366.6066666666665" y="270.0">service.collectingData.SNMPCollector</node>
+    <node x="636.8566666666666" y="90.0">service.userConfiguration.DeviceService</node>
+    <node x="571.5" y="0.0">service.userConfiguration.IDeviceService</node>
+    <node x="174.99999999999994" y="190.0">controller.ICollectorController</node>
+    <node x="1434.645" y="90.0">controller.CollectableEntityControllerImpl</node>
+    <node x="926.5" y="0.0">repositories.DataRecordRepository</node>
+    <node x="445.1066666666665" y="90.0">controller.DeviceControllerImpl</node>
+    <node x="0.0" y="345.0">configuration.MicroServiceMain</node>
+    <node x="36.15499999999997" y="270.0">controller.CollectorControllerImpl</node>
+    <node x="1333.0" y="0.0">service.userConfiguration.ICollectableEntityService</node>
+    <node x="1530.0" y="0.0">controller.ICollectableEntityController</node>
+    <node x="175.35333333333324" y="0.0">service.collectingData.Collector</node>
+    <node x="1.0" y="190.0">service.collectingData.CollectionScheduler</node>
+    <node x="1111.5" y="0.0">repositories.CollectableEntitiesRepository</node>
+    <node x="389.1066666666665" y="190.0">service.collectingData.CollectorImpl</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="service.collectingData.CollectionScheduler" target="service.collectingData.Collector">
+      <point x="-51.33333333333326" y="-15.0" />
+      <point x="26.666666666666742" y="170.0" />
+      <point x="0.0" y="170.0" />
+      <point x="0.0" y="50.0" />
+      <point x="183.35333333333324" y="50.0" />
+      <point x="-40.0" y="15.0" />
+    </edge>
+    <edge source="service.collectingData.CollectionScheduler" target="service.collectingData.CollectorFactory">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="service.collectingData.SNMPCollector" target="service.collectingData.CollectorImpl">
+      <point x="-16.125" y="-15.0" />
+      <point x="414.9816666666665" y="250.0" />
+      <point x="419.1066666666665" y="250.0" />
+      <point x="-30.0" y="15.0" />
+    </edge>
+    <edge source="service.collectingData.SNMPCollector" target="repositories.Dao">
+      <point x="48.375" y="-15.0" />
+      <point x="479.4816666666665" y="250.0" />
+      <point x="1032.0" y="250.0" />
+      <point x="23.0" y="15.0" />
+    </edge>
+    <edge source="service.collectingData.CollectorImpl" target="service.collectingData.Collector">
+      <point x="0.0" y="-15.0" />
+      <point x="449.1066666666665" y="140.0" />
+      <point x="407.99999999999994" y="140.0" />
+      <point x="407.99999999999994" y="50.0" />
+      <point x="263.35333333333324" y="50.0" />
+      <point x="40.0" y="15.0" />
+    </edge>
+    <edge source="controller.DeviceControllerImpl" target="controller.IDeviceController">
+      <point x="-40.0" y="-15.0" />
+      <point x="485.1066666666665" y="70.0" />
+      <point x="481.99999999999994" y="70.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="repositories.Dao" target="repositories.DataRecordRepository">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="service.collectingData.SNMPCollector" target="service.collectingData.Collector">
+      <point x="-48.375" y="-15.0" />
+      <point x="382.7316666666665" y="250.0" />
+      <point x="337.49999999999994" y="250.0" />
+      <point x="337.49999999999994" y="70.0" />
+      <point x="231.35333333333324" y="70.0" />
+      <point x="8.0" y="15.0" />
+    </edge>
+    <edge source="controller.CollectableEntityControllerImpl" target="service.userConfiguration.ICollectableEntityService">
+      <point x="-53.5" y="-15.0" />
+      <point x="1488.145" y="70.0" />
+      <point x="1465.75" y="70.0" />
+      <point x="44.25" y="15.0" />
+    </edge>
+    <edge source="service.userConfiguration.DeviceService" target="service.userConfiguration.IDeviceService">
+      <point x="-30.000000000000114" y="-15.0" />
+      <point x="666.8566666666666" y="70.0" />
+      <point x="663.75" y="70.0" />
+      <point x="30.75" y="15.0" />
+    </edge>
+    <edge source="repositories.Dao" target="repositories.CollectableEntitiesRepository">
+      <point x="23.0" y="-15.0" />
+      <point x="1032.0" y="70.0" />
+      <point x="1161.75" y="70.0" />
+      <point x="-50.25" y="15.0" />
+    </edge>
+    <edge source="controller.CollectorControllerImpl" target="controller.ICollectorController">
+      <point x="57.66666666666674" y="-15.0" />
+      <point x="180.32166666666672" y="250.0" />
+      <point x="250.99999999999994" y="250.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="service.userConfiguration.CollectableEntityService" target="repositories.CollectableEntitiesRepository">
+      <point x="-43.5" y="-15.0" />
+      <point x="1271.52" y="70.0" />
+      <point x="1262.25" y="70.0" />
+      <point x="50.25" y="15.0" />
+    </edge>
+    <edge source="controller.DeviceControllerImpl" target="service.userConfiguration.IDeviceService">
+      <point x="40.0" y="-15.0" />
+      <point x="565.1066666666666" y="70.0" />
+      <point x="602.25" y="70.0" />
+      <point x="-30.75" y="15.0" />
+    </edge>
+    <edge source="service.userConfiguration.DeviceService" target="repositories.DevicePropertiesRepository">
+      <point x="29.999999999999886" y="-15.0" />
+      <point x="726.8566666666666" y="70.0" />
+      <point x="762.5" y="70.0" />
+      <point x="-48.0" y="15.0" />
+    </edge>
+    <edge source="controller.CollectableEntityControllerImpl" target="controller.ICollectableEntityController">
+      <point x="53.5" y="-15.0" />
+      <point x="1595.145" y="70.0" />
+      <point x="1626.5" y="70.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="repositories.Dao" target="repositories.DevicePropertiesRepository">
+      <point x="-23.0" y="-15.0" />
+      <point x="986.0" y="70.0" />
+      <point x="858.5" y="70.0" />
+      <point x="48.0" y="15.0" />
+    </edge>
+    <edge source="service.collectingData.CollectorFactory" target="service.collectingData.Collector">
+      <point x="-33.75" y="-15.0" />
+      <point x="44.25" y="60.0" />
+      <point x="199.35333333333324" y="60.0" />
+      <point x="-24.0" y="15.0" />
+    </edge>
+    <edge source="service.collectingData.CollectionScheduler" target="repositories.Dao">
+      <point x="51.33333333333326" y="-15.0" />
+      <point x="129.33333333333326" y="160.0" />
+      <point x="986.0" y="160.0" />
+      <point x="-23.0" y="15.0" />
+    </edge>
+    <edge source="service.collectingData.CollectorImpl" target="repositories.Dao">
+      <point x="40.0" y="-15.0" />
+      <point x="489.1066666666665" y="170.0" />
+      <point x="1009.0" y="170.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="service.userConfiguration.CollectableEntityService" target="service.userConfiguration.ICollectableEntityService">
+      <point x="43.5" y="-15.0" />
+      <point x="1358.52" y="70.0" />
+      <point x="1377.25" y="70.0" />
+      <point x="-44.25" y="15.0" />
+    </edge>
+    <edge source="controller.CollectorControllerImpl" target="service.collectingData.CollectionScheduler">
+      <point x="-57.66666666666674" y="-15.0" />
+      <point x="64.98833333333323" y="250.0" />
+      <point x="39.5" y="250.0" />
+      <point x="-38.5" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0146002317497103" x="672.883736866149" y="97.00000000000003" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,82 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath('io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE')
+		classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
+}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'application'
+
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use 'jcenter' for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.4.2.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j', version: '1.4.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.2.RELEASE'
+    compile group: 'org.snmp4j', name: 'snmp4j', version: '2.5.5'
+    compile group: 'com.google.guava', name: 'guava', version: '21.0'
+    compile group: 'io.prometheus', name: 'simpleclient', version: '0.3.0'
+    compile group: 'io.prometheus', name: 'simpleclient_hotspot', version: '0.3.0'
+    compile group: 'io.prometheus', name: 'simpleclient_httpserver', version: '0.3.0'
+    compile group: 'io.prometheus', name: 'simpleclient_pushgateway', version: '0.3.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
+
+    //Model Mapper
+    compile group: 'com.github.jmnarloch', name: 'modelmapper-spring-boot-starter', version: '1.1.0'
+
+    //Elastic search
+    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '6.2.3'
+    compile group: 'org.elasticsearch', name: 'elasticsearch', version: '6.2.3'
+
+// vert.x dependencies
+	compile "io.vertx:vertx-core:3.2.1"
+	compile "io.vertx:vertx-web:3.2.1"
+	compile "io.vertx:vertx-dropwizard-metrics:3.2.1"
+	compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile group: 'org.springframework.data', name: 'spring-data-mongodb', version: '1.10.0.RELEASE'
+
+// Improve performance - recommanded by Vert.x
+	compile group: 'javassist', name: 'javassist', version: '3.12.1.GA'
+
+    //Lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
+
+    //bridge logging from JCL to SLF4j
+    compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.21'
+
+    //Logback
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
+
+    //Jasper
+    compile group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.5.1'
+    compile group: 'net.sf.jasperreports', name: 'jasperreports-fonts', version: '6.0.0'
+
+
+    //Swagger
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+
+}
+
+
+jar {
+		manifest.attributes provider: 'gradle'
+		}
+
