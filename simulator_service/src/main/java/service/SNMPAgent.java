@@ -6,6 +6,7 @@ import org.snmp4j.agent.BaseAgent;
 import org.snmp4j.agent.CommandProcessor;
 import org.snmp4j.agent.DuplicateRegistrationException;
 import org.snmp4j.agent.ManagedObject;
+import org.snmp4j.agent.mo.MOAccessImpl;
 import org.snmp4j.agent.mo.MOScalar;
 import org.snmp4j.agent.mo.MOTableRow;
 import org.snmp4j.agent.mo.snmp.*;
@@ -16,6 +17,7 @@ import org.snmp4j.security.SecurityModel;
 import org.snmp4j.security.USM;
 import org.snmp4j.smi.*;
 import org.snmp4j.transport.TransportMappings;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -29,6 +31,9 @@ public class SNMPAgent extends BaseAgent {
     static final OID actPkts = new OID( ".1.3.6.1.3.1.5.8.0" );
     static Integer maxRate_value = 0;
     static Integer actPkts_value = 0;
+    static Integer table1_value1 = 0;
+    static Integer table1_value2 = 0;
+    static Integer table1_value3 = 0;
     Random rand = new Random();
 
     /**
@@ -72,6 +77,10 @@ public class SNMPAgent extends BaseAgent {
 
         actPkts_value += rand.nextInt(10) + 1;
         System.out.println("actPkts new value is " + actPkts_value );
+
+        table1_value1 += rand.nextInt(5) + 1;
+        table1_value2 += rand.nextInt(5) + 1;
+        table1_value3 += rand.nextInt(5) + 1;
     }
 
     /**
@@ -153,6 +162,12 @@ public class SNMPAgent extends BaseAgent {
         MOScalar mo_actPkts = MOCreator.createReadOnly( actPkts, String.valueOf( actPkts_value ));
         registerManagedObject(mo_actPkts);
 
+        MOTableBuilder builder = new MOTableBuilder(new OID(".1.3.6.1.4.1.44.8"))
+                .addColumnType(SMIConstants.SYNTAX_OCTET_STRING,MOAccessImpl.ACCESS_READ_WRITE)
+                .addRowValue(new OctetString( String.valueOf( table1_value1 )))
+                .addRowValue(new OctetString( String.valueOf( table1_value2 ) ))
+                .addRowValue(new Integer32(table1_value3));
+        registerManagedObject(builder.build());
 
     }
 
