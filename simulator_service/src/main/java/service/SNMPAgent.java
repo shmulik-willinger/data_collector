@@ -29,11 +29,19 @@ public class SNMPAgent extends BaseAgent {
 
     static final OID maxRate = new OID( ".1.3.6.1.2.1.4.10.0" );
     static final OID actPkts = new OID( ".1.3.6.1.3.1.5.8.0" );
+    static final OID currentTraffic = new OID(".1.3.6.1.4.1.44.8");
     static Integer maxRate_value = 0;
     static Integer actPkts_value = 0;
     static Integer table1_value1 = 0;
     static Integer table1_value2 = 0;
     static Integer table1_value3 = 0;
+    static Integer table1_value4 = 0;
+    static Integer table1_value5 = 0;
+    static Integer table1_value6 = 0;
+    static Integer table1_value7 = 0;
+    static Integer table1_value8 = 0;
+    static Integer table1_value9 = 0;
+    static Integer table1_value10 = 0;
     Random rand = new Random();
 
     /**
@@ -81,6 +89,13 @@ public class SNMPAgent extends BaseAgent {
         table1_value1 += rand.nextInt(5) + 1;
         table1_value2 += rand.nextInt(5) + 1;
         table1_value3 += rand.nextInt(5) + 1;
+        table1_value4 += rand.nextInt(5) + 1;
+        table1_value5 += rand.nextInt(5) + 1;
+        table1_value6 += rand.nextInt(5) + 1;
+        table1_value7 += rand.nextInt(5) + 1;
+        table1_value8 += rand.nextInt(5) + 1;
+        table1_value9 += rand.nextInt(5) + 1;
+        table1_value10 += rand.nextInt(5) + 1;
     }
 
     /**
@@ -162,11 +177,18 @@ public class SNMPAgent extends BaseAgent {
         MOScalar mo_actPkts = MOCreator.createReadOnly( actPkts, String.valueOf( actPkts_value ));
         registerManagedObject(mo_actPkts);
 
-        MOTableBuilder builder = new MOTableBuilder(new OID(".1.3.6.1.4.1.44.8"))
+        MOTableBuilder builder = new MOTableBuilder(currentTraffic)
                 .addColumnType(SMIConstants.SYNTAX_OCTET_STRING,MOAccessImpl.ACCESS_READ_WRITE)
                 .addRowValue(new OctetString( String.valueOf( table1_value1 )))
-                .addRowValue(new OctetString( String.valueOf( table1_value2 ) ))
-                .addRowValue(new Integer32(table1_value3));
+                .addRowValue(new OctetString( String.valueOf( table1_value2 )))
+                .addRowValue(new OctetString( String.valueOf( table1_value3 )))
+                .addRowValue(new OctetString( String.valueOf( table1_value4 )))
+                .addRowValue(new OctetString( String.valueOf( table1_value5 )))
+                .addRowValue(new OctetString( String.valueOf( table1_value6 )))
+                .addRowValue(new OctetString( String.valueOf( table1_value7 )))
+                .addRowValue(new OctetString( String.valueOf( table1_value8 )))
+                .addRowValue(new OctetString( String.valueOf( table1_value9 )))
+                .addRowValue(new OctetString( String.valueOf( table1_value10 )));
         registerManagedObject(builder.build());
 
     }
