@@ -37,8 +37,8 @@ public class SyncRepository implements ISyncRepository
     @Autowired
     private MongoOperations mongoOps;
 
-    @Autowired
-    private ConfigurationRepository configurationRepository;
+   // @Autowired
+   // private ConfigurationRepository configurationRepository;
 
 
     List<ConfigurationProperties> configuration;
@@ -56,9 +56,9 @@ public class SyncRepository implements ISyncRepository
             centrelize_DB_Host = getValueForKey( "centrelize_DB_Host" );
             centrelize_DB_port = getValueForKey( "centrelize_DB_port" );
 */
-            local_DB_Host = "localhost";
+            local_DB_Host = "10.4.61.21";
             local_DB_port = "9200";
-            centrelize_DB_Host = "localhost";
+            centrelize_DB_Host = "10.4.61.21";
             centrelize_DB_port = "9200";
         }
         catch (Exception e)

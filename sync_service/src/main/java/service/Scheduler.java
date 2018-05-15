@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class Scheduler
 {
-    private static final int DEFAULT_COLLECTION_TIME_INTERVAL = 100000; // TODO - Externalize as a configuration parameter
+    private static final int DEFAULT_COLLECTION_TIME_INTERVAL = 10000; // TODO - Externalize as a configuration parameter
     private final Logger logger = LoggerFactory.getLogger(getClass());
-    private static final int DEFAULT_COLLECT_SIZE= 1; //  TODO - Externalize as a configuration parameter
+    private static final int DEFAULT_COLLECT_SIZE= 10; //  TODO - Externalize as a configuration parameter
 
     @Autowired
     private ISyncService syncService;
@@ -23,6 +23,7 @@ public class Scheduler
     {
         logger.debug(">> Starting Scheduler");
 
+        //syncService.sparkPOC();
         syncService.sync(DEFAULT_COLLECT_SIZE);
 
         logger.debug("<< Scheduler sync finished");
