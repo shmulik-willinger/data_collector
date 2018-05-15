@@ -11,6 +11,7 @@ import org.springframework.context.SmartLifecycle;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
@@ -22,6 +23,7 @@ import java.io.IOException;
 @Slf4j
 @Configuration
 @EnableAutoConfiguration
+@PropertySource({"classpath:application.properties"})
 public class MicroServiceMain implements SmartLifecycle {
 	//private static final Logger logger = LoggerFactory.getLogger(MicroServiceMain.class);
 	private static final Logger activityLogger = LoggerFactory.getLogger("ActivityLogger");
@@ -29,9 +31,8 @@ public class MicroServiceMain implements SmartLifecycle {
 	public static void main(String[] args) {
 		try {
 			
-			@SuppressWarnings("unused")
 			ConfigurableApplicationContext context = new SpringApplicationBuilder(MicroServiceMain.class).run(args);
-			System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "6") ;
+			//System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "6") ;
 
 			activityLogger.debug("Starting...");
 

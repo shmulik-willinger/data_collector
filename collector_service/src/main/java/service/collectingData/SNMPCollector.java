@@ -335,6 +335,9 @@ public class SNMPCollector extends CollectorImpl {
 		int bulkSize = countersResults.get(0).getPort().getBulkSize();
 		event = get(oids, deviceCollectionProperties, bulkSize);
 
+		if (event == null)
+		    return quotaEntry;
+
 		PDU response = event.getResponse();
 
 		if (response != null) {

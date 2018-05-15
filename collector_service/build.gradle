@@ -11,10 +11,16 @@ buildscript {
 		classpath('se.transmode.gradle:gradle-docker:1.2')
     }
 }
+
+group = 'springio'
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'application'
+apply plugin: 'docker'
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
 
 
 // In this section you declare where to find the dependencies of your project
@@ -27,7 +33,7 @@ repositories {
 // In this section you declare the dependencies for your production and test code
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.4.2.RELEASE'
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j', version: '1.4.2.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j', version: '1.3.8.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.2.RELEASE'
     compile group: 'org.snmp4j', name: 'snmp4j', version: '2.5.5'
     compile group: 'com.google.guava', name: 'guava', version: '21.0'
@@ -46,11 +52,13 @@ dependencies {
 
 // vert.x dependencies
 	compile "io.vertx:vertx-core:3.2.1"
+	compile "io.vertx:vertx-core:3.2.1"
 	compile "io.vertx:vertx-web:3.2.1"
 	compile "io.vertx:vertx-dropwizard-metrics:3.2.1"
-	compile("org.springframework.boot:spring-boot-starter-data-mongodb")
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile group: 'org.springframework.data', name: 'spring-data-mongodb', version: '1.10.0.RELEASE'
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+  //  compile('org.springframework.boot:spring-boot-starter-data-jpa')
+ //   compile('org.mongodb:mongo-java-driver:3.7.0')
+//	compile group: 'org.springframework.data', name: 'spring-data-mongodb', version: '1.10.0.RELEASE'
 
 // Improve performance - recommanded by Vert.x
 	compile group: 'javassist', name: 'javassist', version: '3.12.1.GA'
@@ -64,10 +72,6 @@ dependencies {
     //Logback
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
 
-    //Jasper
-    compile group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.5.1'
-    compile group: 'net.sf.jasperreports', name: 'jasperreports-fonts', version: '6.0.0'
-
 
     //Swagger
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
@@ -76,7 +80,20 @@ dependencies {
 }
 
 
-jar {
-		manifest.attributes provider: 'gradle'
-		}
+mainClassName = 'configuration.MicroServiceMain'
+task buildDocker(type: Docker, dependsOn: build) {
+    push = false
+    applicationName = jar.baseName
+    dockerfile = file('Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
+}
 
+jar {
+    manifest.attributes provider: 'gradle'
+    manifest.attributes 'Main-Class': 'configuration.MicroServiceMain'
+}
